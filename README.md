@@ -1,7 +1,18 @@
-# Intuition Spinner — cloud study
+# Intuition Spinner
 
-Design preview based on the recovered React/Vite project and the selected Moonstone concept. The original source ZIP is preserved separately. Fifty reflections explore ordinary rooms, conversations, light, the body, and belonging. Original messages remain in src/data/messages.ts for comparison.
+[Intuition Spinner](https://intuition-spinner.vercel.app/) is a quiet place for reflection from The AlcheMind Studio.
 
-The background is Alin's selected lilac cloud image and is locally bundled. The custom AlcheMind mark is an early brand study based on a window, horizon, and off-center point. Music retains Alin's existing GitHub-hosted recordings. Fonts load from Google Fonts.
+Activate the circular spinner to receive one thoughtful question and a gentle invitation to pause, notice, and return to yourself. Optional ambient music and light or dark modes accompany the experience. No account or personal information is required.
 
-Run npm ci, npm run dev, and npm run build. This is a private design preview; the mark, mobile layout, copy, and interactions need user review. The recovered dependency versions are retained; npm reports vulnerabilities that should be reviewed before a public release.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Create a production build with `npm run build`.
+
+## Created by
+
+Designed and created by Alin for The AlcheMind Studio. © 2025.
