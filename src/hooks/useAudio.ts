@@ -31,6 +31,26 @@ const tracks: Track[] = [
     id: 'light',
     name: 'Light',
     url: 'https://raw.githubusercontent.com/Alin-Ylcnky/alchemind-audio/main/SpringEquinox%20%201.mp3'
+  },
+  {
+    id: 'light-of-the-soul',
+    name: 'Light of the Soul',
+    url: '/audio/light-of-the-soul.mp3'
+  },
+  {
+    id: 'the-caravan',
+    name: 'The Caravan',
+    url: '/audio/the-caravan.mp3'
+  },
+  {
+    id: 'desert-of-light',
+    name: 'Desert of Light',
+    url: '/audio/desert-of-light.mp3'
+  },
+  {
+    id: 'moonrise',
+    name: 'Moonrise',
+    url: '/audio/moonrise.mp3'
   }
 ];
 
