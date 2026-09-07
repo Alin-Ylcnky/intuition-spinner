@@ -9,6 +9,10 @@
 - Optional ambient music and light or dark display modes support the experience.
 - No account, payment, or personal information is required.
 
+## Reflection guide
+
+The site includes a short, practical guide to self-reflection questions at https://intuition-spinner.vercel.app/reflection-prompts/. It explains how to use a single prompt without turning reflection into another task to complete.
+
 ## Creator
 
 Intuition Spinner is an AlcheMind Studio project by Alin.

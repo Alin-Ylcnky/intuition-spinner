@@ -99,6 +99,7 @@ export default function App() {
     <footer className="footer">
       <span className="made-by">A peaceful space made with <Heart className="love-heart" size={16} fill="currentColor" aria-hidden="true" /><span className="sr-only">love</span></span>
       <span className="copyright">© 2025 The AlcheMind Studio</span>
+      <a className="reflection-guide-link" href="/reflection-prompts/">Reflection guide</a>
     </footer>
   </div>;
 }
