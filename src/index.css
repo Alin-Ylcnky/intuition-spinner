@@ -97,9 +97,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .sound-panel { align-self: stretch; width: 100%; display: grid; grid-template-columns: auto minmax(0,1fr) auto 82px; align-items: center; gap: 12px; border: 1px solid #fff7; border-radius: 999px; background: var(--glass-soft); backdrop-filter: blur(18px); padding: 9px 14px 9px 10px; margin-top: 20px; box-shadow: 0 10px 35px #3b285020; }
 .sound-panel .round-icon { width: 42px; height: 42px; border-color: #8f759448; background: #fff7; }
-.track-control { min-width: 0; }
-.track-control label { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 2px; }
-.track-control select { width: 100%; border: 0; background: transparent; color: var(--ink); font-size: 14px; padding: 2px 25px 2px 0; }
+.track-control { position: relative; min-width: 0; }
+.track-label { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 2px; }
+.track-trigger { width: 100%; min-width: 0; border: 0; padding: 2px 0; background: transparent; color: var(--ink); font-size: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; text-align: left; }
+.track-trigger span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.track-trigger svg { flex: none; transition: transform .25s ease; }
+.track-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.track-menu { position: absolute; z-index: 20; left: -16px; right: -12px; bottom: calc(100% + 18px); max-height: min(330px, 52vh); overflow-y: auto; display: grid; gap: 3px; padding: 9px; border: 1px solid #ffffffc9; border-radius: 26px; background: linear-gradient(145deg, #fffdf5f2 0%, #f8eaf1e9 58%, #ead8ebeb 100%); box-shadow: 0 22px 58px #38214442, inset 0 1px #fff; -webkit-backdrop-filter: blur(28px) saturate(1.3); backdrop-filter: blur(28px) saturate(1.3); scrollbar-width: thin; scrollbar-color: #927597aa transparent; animation: menu-arrive .2s ease-out; }
+.track-menu::-webkit-scrollbar { width: 9px; }
+.track-menu::-webkit-scrollbar-track { background: transparent; margin: 16px 0; }
+.track-menu::-webkit-scrollbar-thumb { border: 2px solid transparent; border-radius: 999px; background: #927597aa; background-clip: padding-box; }
+.track-menu button { width: 100%; border: 0; border-radius: 17px; background: transparent; color: var(--ink); padding: 11px 14px; text-align: left; font-size: 14px; transition: background .18s ease, transform .18s ease; }
+.track-menu button:hover, .track-menu button:focus-visible { background: #ffffff91; transform: translateX(2px); outline: none; }
+.track-menu button.is-selected { background: #ffffffbd; box-shadow: inset 0 0 0 1px #8f759433; font-weight: 600; }
+@keyframes menu-arrive { from { opacity: 0; transform: translateY(7px) scale(.985); } }
 .sound-panel input { width: 82px; accent-color: #654070; }
 .audio-error { align-self: center; font-size: 13px; color: #63334b; background: #fff9; border-radius: 999px; padding: 8px 14px; margin: 10px 0 0; }
 
@@ -116,8 +127,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .night .portal-button { background: radial-gradient(circle at 48% 46%, #fff6 0 5%, #bc96b955 20%, #8068864d 43%, #4b3b593d 62%, #fff1 70%, transparent 71%); }
 .night .portal-copy { text-shadow: 0 2px 14px #211329, 0 1px 2px #211329; }
 .night .reflection-card { border-color: #ffffff63; background: linear-gradient(145deg, #33273bb8 0%, #2c21368f 55%, #21192980 100%); box-shadow: 0 24px 70px #10091875, inset 0 1px #ffffff4d, inset 0 0 34px #d5b8df14; }
-.night select { color: #f1e7f4; }
-.night option { background: #31263a; }
+.night .track-menu { border-color: #ffffff69; background: linear-gradient(145deg, #392b43eb 0%, #2d2238e8 60%, #261d30eb 100%); box-shadow: 0 22px 58px #1009188c, inset 0 1px #ffffff4d; }
+.night .track-menu button { color: #f1e7f4; }
+.night .track-menu button:hover, .night .track-menu button:focus-visible { background: #ffffff17; }
+.night .track-menu button.is-selected { background: #ffffff24; box-shadow: inset 0 0 0 1px #ffffff28; }
 
 @media (max-width: 920px) {
   .app-shell { padding: 24px 24px 18px; }

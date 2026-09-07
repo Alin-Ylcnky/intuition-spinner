@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Moon, Sun, Play, Pause, Volume2, VolumeX, Heart } from 'lucide-react';
+import { Moon, Sun, Play, Pause, Volume2, VolumeX, Heart, ChevronDown } from 'lucide-react';
 import { useAudio } from './hooks/useAudio';
 import { reflections as cards } from './data/reflections';
 
@@ -18,9 +18,25 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [dark, setDark] = useState(false);
+  const [trackMenuOpen, setTrackMenuOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>();
+  const trackPicker = useRef<HTMLDivElement>(null);
   const audio = useAudio();
   useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => {
+    function closeTrackMenu(event: PointerEvent) {
+      if (!trackPicker.current?.contains(event.target as Node)) setTrackMenuOpen(false);
+    }
+    function closeWithEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') setTrackMenuOpen(false);
+    }
+    document.addEventListener('pointerdown', closeTrackMenu);
+    document.addEventListener('keydown', closeWithEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeTrackMenu);
+      document.removeEventListener('keydown', closeWithEscape);
+    };
+  }, []);
 
   function spin() {
     if (spinning) return;
@@ -65,7 +81,15 @@ export default function App() {
         </article>
         <div className="sound-panel">
           <button className="round-icon" onClick={audio.togglePlay} aria-label={audio.isPlaying ? 'Pause music' : 'Play music'}>{audio.isPlaying ? <Pause size={18} /> : <Play size={18} />}</button>
-          <div className="track-control"><label htmlFor="track">A little background company</label><select id="track" value={audio.currentTrack.id} onChange={event => audio.changeTrack(event.target.value)}>{audio.tracks.map(track => <option key={track.id} value={track.id}>{track.name}</option>)}</select></div>
+          <div className="track-control" ref={trackPicker}>
+            <span className="track-label">A little background company</span>
+            <button className="track-trigger" type="button" aria-haspopup="listbox" aria-expanded={trackMenuOpen} onClick={() => setTrackMenuOpen(open => !open)}>
+              <span>{audio.currentTrack.name}</span><ChevronDown size={16} aria-hidden="true" />
+            </button>
+            {trackMenuOpen && <div className="track-menu" role="listbox" aria-label="Choose background music">
+              {audio.tracks.map(track => <button key={track.id} type="button" role="option" aria-selected={track.id === audio.currentTrack.id} className={track.id === audio.currentTrack.id ? 'is-selected' : ''} onClick={() => { audio.changeTrack(track.id); setTrackMenuOpen(false); }}>{track.name}</button>)}
+            </div>}
+          </div>
           <button className="round-icon" onClick={audio.toggleMute} aria-label={audio.isMuted ? 'Unmute music' : 'Mute music'}>{audio.isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}</button>
           <input type="range" aria-label="Music volume" min="0" max="1" step="0.05" value={audio.volume} onChange={event => audio.adjustVolume(Number(event.target.value) - audio.volume)} />
         </div>
