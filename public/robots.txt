@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://intuition-spinner.vercel.app/sitemap.xml

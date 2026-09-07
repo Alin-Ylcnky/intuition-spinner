@@ -1,0 +1,14 @@
+# Intuition Spinner
+
+> Intuition Spinner is a free, peaceful reflection app created by The AlcheMind Studio. It offers 50 quiet prompts that help people pause, notice their surroundings, and reconnect with themselves.
+
+## What the app does
+
+- A visitor activates one circular spinner to receive a reflection.
+- Each reflection contains a one-word theme, a thoughtful question, and one small physical or observational invitation.
+- Optional ambient music and light or dark display modes support the experience.
+- No account, payment, or personal information is required.
+
+## Creator
+
+Intuition Spinner is an AlcheMind Studio project by Alin.
